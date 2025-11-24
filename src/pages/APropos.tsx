@@ -97,10 +97,6 @@ const styles: Record<string, React.CSSProperties> = {
     textDecoration: "underline",
   },
   footer: {
-    position: "fixed",
-    left: 0,
-    right: 0,
-    bottom: 0,
     width: "100%",
     fontFamily: "var(--font-serif)",
     fontSize: "16px",
@@ -111,8 +107,9 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#fff",
     padding: "16px 32px",
     boxSizing: "border-box",
-    zIndex: 100,
     justifyContent: "center",
+    // Removed position: "fixed", bottom, left, right, zIndex to avoid overlap
+  },
   },
 };
 
