@@ -1,0 +1,49 @@
+h1 {
+    font-family: var(--font-serif);
+    font-size: 61px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 48.8px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  h3 {
+    font-family: var(--font-serif);
+    font-size: 39.1px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  h4 {
+    font-family: var(--font-serif);
+    font-size: 31.3px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  h5 {
+    font-family: var(--font-serif);
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  h6 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  
+  p, a, span {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  
