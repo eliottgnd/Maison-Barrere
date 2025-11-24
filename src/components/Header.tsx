@@ -1,7 +1,7 @@
 import React from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
-import LogoMaisonBarrere from "../assets/LogoMaisonBarrere.svg";
+import LogoMaisonBarrere from "../assets/logo.svg";
 
 const navLinks = [
   { label: "Vitrine", path: "/vitrine" },
