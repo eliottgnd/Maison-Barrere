@@ -1,11 +1,19 @@
 import React from "react";
 import { gsap } from "gsap";
+import { useNavigate } from "react-router-dom";
 import LogoMaisonBarrere from "../assets/LogoMaisonBarrere.svg";
+
+const navLinks = [
+  { label: "Vitrine", path: "/vitrine" },
+  { label: "À propos", path: "/apropos" },
+];
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const overlayRef = React.useRef<HTMLDivElement | null>(null);
   const menuContentRef = React.useRef<HTMLElement | null>(null);
+  const navButtonRefs = React.useRef<HTMLButtonElement[]>([]);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -13,7 +21,11 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false);
   const goHome = () => {
-    window.location.href = "/";
+    navigate("/");
+  };
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    closeMenu();
   };
 
   React.useLayoutEffect(() => {
@@ -27,6 +39,51 @@ export default function Header() {
     if (items.length) {
       gsap.set(items, { opacity: 0, y: 20 });
     }
+  }, []);
+
+  React.useEffect(() => {
+    const buttons = navButtonRefs.current;
+    const cleanups: Array<() => void> = [];
+
+    buttons.forEach((button) => {
+      if (!button) {
+        return;
+      }
+
+      const onEnter = () => {
+        gsap.to(button, {
+          letterSpacing: "0.3em",
+          opacity: 0.7,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      const onLeave = () => {
+        gsap.to(button, {
+          letterSpacing: "0.15em",
+          opacity: 1,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      };
+
+      button.addEventListener("mouseenter", onEnter);
+      button.addEventListener("mouseleave", onLeave);
+      button.addEventListener("focus", onEnter);
+      button.addEventListener("blur", onLeave);
+
+      cleanups.push(() => {
+        button.removeEventListener("mouseenter", onEnter);
+        button.removeEventListener("mouseleave", onLeave);
+        button.removeEventListener("focus", onEnter);
+        button.removeEventListener("blur", onLeave);
+      });
+    });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
   }, []);
 
   React.useEffect(() => {
@@ -159,12 +216,21 @@ export default function Header() {
           />
         </button>
         <nav ref={menuContentRef} style={styles.menuContent}>
-          <a style={styles.menuLink} href="#vitrine" onClick={closeMenu}>
-            Vitrine
-          </a>
-          <a style={styles.menuLink} href="#apropos" onClick={closeMenu}>
-            À propos
-          </a>
+          {navLinks.map((link, index) => (
+            <button
+              key={link.path}
+              style={styles.menuButton}
+              type="button"
+              ref={(el) => {
+                if (el) {
+                  navButtonRefs.current[index] = el;
+                }
+              }}
+              onClick={() => handleNavigate(link.path)}
+            >
+              {link.label}
+            </button>
+          ))}
           <p style={styles.menuFooter}>maisonbarrere®</p>
         </nav>
       </div>
@@ -274,12 +340,17 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
     gap: "20px",
   },
-  menuLink: {
+  menuButton: {
     fontFamily: "var(--font-sans)",
     fontSize: "28px",
     textDecoration: "none",
     color: "#000000",
     outline: "none",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    letterSpacing: "0.15em",
+    userSelect: "none",
     WebkitTapHighlightColor: "transparent",
   },
   menuFooter: {

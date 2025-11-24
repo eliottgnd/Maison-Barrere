@@ -1,6 +1,18 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HeroVideo from "./components/HeroVideo";
 import heroVideo from "./assets/herovideomaquette.mp4";
+import Vitrine from "./pages/Vitrine";
+import APropos from "./pages/APropos";
+
+function Home() {
+  return (
+    <HeroVideo
+      src={heroVideo}
+      fallbackImage="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80"
+    />
+  );
+}
 
 function App() {
   return (
@@ -12,10 +24,19 @@ function App() {
       }}
     >
       <Header />
-      <HeroVideo
-        src={heroVideo}
-        fallbackImage="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80"
-      />
+      <main
+        style={{
+          flex: 1,
+          width: "100%",
+          display: "flex",
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/vitrine" element={<Vitrine />} />
+          <Route path="/apropos" element={<APropos />} />
+        </Routes>
+      </main>
     </div>
   );
 }
