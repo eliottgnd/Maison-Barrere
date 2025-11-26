@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HeroVideo from "./components/HeroVideo";
-import heroVideo from "./assets/herovideomaquette.mp4";
 import Vitrine from "./pages/Vitrine";
 import APropos from "./pages/APropos";
 
