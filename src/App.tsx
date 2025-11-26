@@ -8,8 +8,7 @@ import APropos from "./pages/APropos";
 function Home() {
   return (
     <HeroVideo
-      src={heroVideo}
-      fallbackImage="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80"
+      // No props are passed. <HeroVideo /> does not accept src/fallbackImage props anymore.
     />
   );
 }
