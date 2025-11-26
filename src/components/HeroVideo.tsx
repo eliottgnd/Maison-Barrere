@@ -1,39 +1,20 @@
 import type { CSSProperties } from "react";
+import LogoMaisonBarrere from "../assets/logo.svg";
 
-interface HeroVideoProps {
-  src?: string;
-  fallbackImage?: string;
-}
-
-export default function HeroVideo({ src, fallbackImage }: HeroVideoProps) {
-  const hasVideo = Boolean(src);
-
+export default function HeroVideo() {
   return (
     <section style={styles.container}>
-      {hasVideo ? (
-        <video
-          style={styles.media}
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={src} type="video/mp4" />
-        </video>
-      ) : (
-        fallbackImage && (
-          <img
-            src={fallbackImage}
-            alt="Présentation Maison Barrère"
-            style={styles.media}
-          />
-        )
-      )}
+      <img
+        src={LogoMaisonBarrere}
+        alt="Logo Maison Barrère"
+        style={styles.logo}
+        draggable={false}
+      />
     </section>
   );
 }
 
-const styles: Record<"container" | "media", CSSProperties> = {
+const styles: Record<"container" | "logo", CSSProperties> = {
   container: {
     width: "100%",
     alignSelf: "stretch",
@@ -45,10 +26,15 @@ const styles: Record<"container" | "media", CSSProperties> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    background: "#fff", // Or any appropriate background
   },
-  media: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+  logo: {
+    width: "28vw",
+    maxWidth: "420px",
+    minWidth: "160px",
+    height: "auto",
+    display: "block",
+    pointerEvents: "none",
+    userSelect: "none",
   },
 };

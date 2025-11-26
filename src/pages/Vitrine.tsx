@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useRef, useState } from "react";
 import "./Vitrine.css";
-import heroVideo from "../assets/herovideomaquette.mp4";
-import productImage from "../assets/imparfaitstest.jpg";
+import heroVideo from "../assets/imparfaits.mp4";
+import productImage from "../assets/IMPARFAIT2.jpeg";
 
 type Product = {
   id: string;
@@ -12,23 +12,8 @@ type Product = {
 
 const products: Product[] = [
   {
-    id: "verre-erable",
-    name: "Verre 1",
-    category: "Verre",
-  },
-  {
-    id: "verre-cypres",
-    name: "Verre 2",
-    category: "Verre",
-  },
-  {
-    id: "verre-oranger",
-    name: "Verre 3",
-    category: "Verre",
-  },
-  {
-    id: "verre-santal",
-    name: "Verre 4",
+    id: "Imparfaits",
+    name: "Imparfait",
     category: "Verre",
   },
 ];
