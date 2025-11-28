@@ -273,8 +273,8 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
   },
   logoImage: {
-    height: "22px",
-    objectFit: "contain",
+    height: "24px",
+    width: "auto",
   },
   burgerButton: {
     width: "48px",
