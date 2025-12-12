@@ -8,6 +8,7 @@ type Product = {
   id: string;
   name: string;
   category: string;
+  price: string;
 };
 
 const products: Product[] = [
@@ -15,6 +16,7 @@ const products: Product[] = [
     id: "Imparfaits",
     name: "Imparfait",
     category: "Verre",
+    price: "180€",
   },
 ];
 
@@ -88,7 +90,10 @@ function ProductCard({ product }: { product: Product }) {
       </div>
       <div style={styles.cardFooter}>
         <p style={styles.productCategory}>{product.category}</p>
-        <p style={styles.productName}>{product.name}</p>
+        <div style={styles.productInfo}>
+          <p style={styles.productName}>{product.name}</p>
+          <p style={styles.productPrice}>{product.price}</p>
+        </div>
       </div>
     </div>
   );
@@ -192,11 +197,24 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: "0.1em",
     color: "rgba(0,0,0,0.5)",
   },
+  productInfo: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: "12px",
+  },
   productName: {
     margin: 0,
     fontFamily: "var(--font-serif)",
     fontSize: "18px",
     fontWeight: 400,
+  },
+  productPrice: {
+    margin: 0,
+    fontFamily: "var(--font-serif)",
+    fontSize: "18px",
+    fontWeight: 400,
+    color: "rgba(0,0,0,0.8)",
   },
   notice: {
     margin: "12px 0 0",
