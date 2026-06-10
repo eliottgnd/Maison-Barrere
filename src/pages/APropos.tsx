@@ -35,8 +35,8 @@ export default function APropos() {
           <p style={styles.footerLine}>MAISON BARRERE© 2025 — Tous droits réservés</p>
           <p style={styles.footerLine}>
             site internet codé avec amour par{" "}
-            <a style={styles.footerLink} href="https://www.bymocha.studio" target="_blank" rel="noreferrer">
-              mochastudio
+            <a style={styles.footerLink} href="https://www.eliottashenstar.com" target="_blank" rel="noreferrer">
+              ashenstar agency®
             </a>
           </p>
         </footer>
